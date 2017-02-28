@@ -1,0 +1,20 @@
+web:
+  image: luis/laravel
+  hostname: web
+  container_name: laravel_web
+  volumes:
+    - "./:/var/www/app"
+    - "/tmp/logs:/var/log/apache2"
+  ports:
+    - "80:80"
+  links:
+    - data
+
+data:
+  image: wnameless/mysql-phpmyadmin
+  hostname: data
+  container_name: laravel_data
+  ports:
+    - "49160:22"
+    - "49161:8888"
+    - "49162:3306"
